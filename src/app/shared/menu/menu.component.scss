@@ -1,0 +1,18 @@
+mat-sidenav {
+    background-color: var(--mat-primary);
+    color: white;
+  }
+  
+  mat-nav-list a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  
+  mat-nav-list a.active {
+    background-color: var(--mat-accent);
+    border-radius: 5px;
+  }

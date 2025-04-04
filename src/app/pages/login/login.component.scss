@@ -1,0 +1,80 @@
+/* login.component.scss */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #8e44ad, #3498db);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.login-container {
+  background: linear-gradient(145deg, #ffffff, #f3e6f7);
+  border: 2px solid #8e44ad;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  width: 420px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.login-header {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #8e44ad;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(142, 68, 173, 0.5);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.input-field {
+  padding: 1rem;
+  background: #f3e6f7;
+  border: 1px solid #8e44ad;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+
+  &:focus {
+    background: #ffffff;
+    border-color: #8e44ad;
+    box-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+  }
+}
+
+.login-button {
+  background: linear-gradient(120deg, #8e44ad, #3498db);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4);
+
+  &:hover {
+    background: linear-gradient(120deg, #3498db, #8e44ad);
+    transform: scale(1.05);
+  }
+}
+
+.forgot-password {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #8e44ad;
+  text-decoration: none;
+  font-style: italic;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #3498db;
+  }
+}
