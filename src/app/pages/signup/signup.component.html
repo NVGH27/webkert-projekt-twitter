@@ -1,1 +1,33 @@
-<p>signup works!</p>
+<div class="register-container">
+    <h1 class="register-header">Regisztráció</h1>
+    <form class="register-form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Felhasználónév</mat-label>
+        <input matInput type="text" placeholder="Adj meg egy felhasználónevet!" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Adj meg egy email-címet!" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Jelszó</mat-label>
+        <input matInput type="password" placeholder="Add meg a jelszavad!" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Jelszó mégegyszer</mat-label>
+        <input matInput type="password" placeholder="Erősítsd meg a jelszavad!" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Születési dátum (nem kötelező)</mat-label>
+        <input matInput type="date" placeholder="Add meg a szúletésnapod!" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Telefonszám (nem kötelező)</mat-label>
+        <input matInput type="tel" placeholder="Add meg a telefonszámod!" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="register-button">Regisztráció</button>
+      <p class="login-text">
+        Van már fiókod? <a class="login-link" routerLink="/login">Jelentkezz be!</a>
+      </p>
+    </form>
+  </div>

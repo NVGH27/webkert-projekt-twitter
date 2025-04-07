@@ -1,0 +1,94 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(135deg, #6a1b9a, #8e44ad);
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.register-container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  padding: 2.5rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-height: 100%; // Ensure it doesn't exceed 100% height
+  overflow-y: auto; // Add scroll if content overflows
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); 
+  }
+}
+
+
+.register-header {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6a1b9a;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(106, 27, 154, 0.4);
+}
+
+.register-form {
+  display: grid; // Use grid layout for better control
+  grid-template-columns: repeat(2, 1fr); // Two columns for form fields
+  gap: 1rem; // Adjust gap between fields
+}
+
+.input-field {
+  padding: 0.9rem;
+  background: #f3e5f5;
+  border: 1px solid #8e44ad;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%; // Ensure fields take full width of their grid cell
+  box-sizing: border-box; // Include padding and border in width
+
+  &:focus {
+    background: #ffffff;
+    border-color: #6a1b9a;
+    box-shadow: 0 0 5px rgba(106, 27, 154, 0.5);
+  }
+}
+
+.register-button {
+  background: linear-gradient(120deg, #6a1b9a, #8e44ad);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 27, 154, 0.4);
+  grid-column: span 2; // Make the button span across two columns
+  margin-bottom: 0.8rem; // Smaller gap under the button
+
+  &:hover {
+    background: linear-gradient(120deg, #8e44ad, #6a1b9a);
+    transform: scale(1.05);
+  }
+}
+
+.login-link {
+    text-align: center;
+}
+
+
