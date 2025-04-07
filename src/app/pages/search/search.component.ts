@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { MenuComponent } from '../../shared/menu/menu.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-search',
   imports: [MenuComponent],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.scss'
 })
-export class HomeComponent {
+export class SearchComponent {
 
 }

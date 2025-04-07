@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { MenuComponent } from '../../shared/menu/menu.component';
 
 @Component({
   selector: 'app-profile',
+  imports: [MenuComponent],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {}

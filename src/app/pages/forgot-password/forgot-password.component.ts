@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { MenuComponent } from '../../shared/menu/menu.component';
 
 @Component({
   selector: 'app-forgot-password',
-  imports: [],
+  imports: [MenuComponent],
   templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.scss'
+  styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent {
 

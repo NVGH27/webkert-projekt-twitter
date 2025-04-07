@@ -13,6 +13,7 @@ body {
 }
 
 .login-container {
+  margin-top: 1rem;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
@@ -91,4 +92,11 @@ body {
   &:hover {
     color: #8e44ad;
   }
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 5rem;
+  width: 150px;
+  height: auto;
 }
