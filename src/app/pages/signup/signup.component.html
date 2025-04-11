@@ -1,7 +1,8 @@
 <img src="assets/logo_png.png" alt="Logo" class="logo" />
 <div class="register-container">
     <h1 class="register-header">Regisztrálj most!</h1>
-    <form class="register-form">
+    @if (showForm) {
+    <form [formGroup]="signUpForm" (ngSubmit)="signup()" class="register-form">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Felhasználónév</mat-label>
         <input matInput type="text" placeholder="Adj meg egy felhasználónevet!" required />
@@ -15,7 +16,7 @@
         <input matInput type="password" placeholder="Add meg a jelszavad!" required />
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Jelszó mégegyszer</mat-label>
+        <mat-label>Jelszó újra</mat-label>
         <input matInput type="password" placeholder="Erősítsd meg a jelszavad!" required />
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
@@ -31,4 +32,5 @@
     <p class="login-text">
       Van már fiókod? <a class="login-link" routerLink="/login">Jelentkezz be!</a>
     </p>
+  }
   </div>

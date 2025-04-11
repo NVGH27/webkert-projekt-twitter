@@ -1,0 +1,156 @@
+.home-container {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout with sidenav */
+  height: 100vh; /* Make the home container take full viewport height */
+}
+
+.tweets-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allow the content to take the remaining space */
+  background: linear-gradient(135deg, #6a1b9a, #8e44ad);
+  padding: 2rem;
+  color: #e4e4e7;
+  overflow-y: auto;
+}
+
+.new-tweet {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+
+  textarea {
+    width: 100%;
+    height: 120px;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    outline: none;
+    transition: border 0.3s ease;
+
+    &:focus {
+      border-color: #8e44ad;
+    }
+  }
+
+  .tweet-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+
+    span {
+      font-size: 0.9rem;
+      color: #8e44ad;
+    }
+
+    button {
+      background-color: #8e44ad;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #6a1b9a;
+      }
+    }
+  }
+}
+
+.tweets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* A tweet-ek közötti távolságot szabályozza */
+  padding: 2rem; /* Hozzáad egy kis paddingot */
+  width: 100%; /* Az egész oldal szélességét használja */
+  max-width: 1200px; /* Limitálhatjuk a maximális szélességet */
+  margin: 0 auto; /* Középre igazítja a konténert */
+}
+
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* A textarea és a tweet info közötti távolságot szabályozza */
+  width: 100%; /* Az új tweet konténer az egész szélességet kihasználja */
+  max-width: 800px; /* A tweet komponens maximális szélessége */
+  margin: 0 auto; /* Középre igazítja az új tweet komponenst */
+
+  textarea {
+    width: 100%; /* A textarea az elérhető szélességet használja */
+    max-width: 800px; /* A textarea maximális szélessége */
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    resize: none; /* Megakadályozza, hogy a felhasználó átméretezze a textarea-t */
+    box-sizing: border-box; /* A padding is beleértendő a szélességbe */
+  }
+
+  .tweet-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+
+    span {
+      color: #999;
+    }
+
+    button {
+      background-color: #6a1b9a; /* Lila szín a gomb alap színe */
+      border: none;
+      color: white;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Transition hozzáadása a hover effektushoz */
+
+      &:hover {
+        background-color: #8e44ad; /* Sötétebb lila hover állapotban */
+        transform: scale(1.05); /* Finom nagyítás effektus */
+      }
+    }
+  }
+}
+
+.tweets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .tweet {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #333;
+  }
+}
+
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #6a1b9a; /* A lila szín illeszkedéséhez */
+}
+
+.tweet-time {
+  font-size: 0.8rem;
+  color: #999; /* Halvány szürke, hogy ne vonja el a figyelmet */
+}
+
+

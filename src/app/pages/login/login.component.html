@@ -1,7 +1,8 @@
 <img src="assets/logo_png.png" alt="Logo" class="logo" />
 <div class="login-container"> 
   <h1 class="login-header">Jelentkezz be!</h1>
-  <form class="login-form">
+  @if (showLoginForm) {
+  <form (ngSubmit)="login()" class="login-form">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Email</mat-label>
       <input matInput type="email" placeholder="Add meg az email-címed!" required />
@@ -10,12 +11,11 @@
       <mat-label>Jelszó</mat-label>
       <input matInput type="password" placeholder="Add meg a jelszavad!" required />
     </mat-form-field>
-    <p class="forgot-password">
-      <a class="forgot-password-link" routerLink="/forgot-password">Elfelejtett a jelszavad?</a>
-    </p>
     <button mat-raised-button color="primary" class="login-button">Bejelentkezés</button>
     <p class="signup-text">
       Nincs még fiókod? <a class="signup-link" routerLink="/signup">Csatlakozz!</a>
     </p>
   </form>
+}
 </div>
+  

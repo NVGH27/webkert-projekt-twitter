@@ -1,1 +1,21 @@
-<app-menu></app-menu>
+<div class="home-container">
+  <app-menu></app-menu>
+  <div class="tweets-container">
+    <div class="new-tweet">
+      <textarea [(ngModel)]="newTweet" placeholder="What's happening?" [attr.maxlength]="maxTweetLength"></textarea>
+      <div class="tweet-info">
+        <span>{{ newTweet.length }}/{{ maxTweetLength }}</span>
+        <button (click)="addTweet()">Tweet</button>
+      </div>
+    </div>
+    <div class="tweets-list">
+      <div *ngFor="let tweet of tweets" class="tweet">
+        <div class="tweet-header">
+          <span class="user-name">{{ tweet.user }}</span>
+          <span class="tweet-time">{{ tweet.timestamp | timeAgo }}</span>
+        </div>
+        <p>{{ tweet.content }}</p>
+      </div>
+    </div>
+  </div>
+</div>

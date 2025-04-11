@@ -22,10 +22,6 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/notifications/notifications.component').then(m => m.NotificationsComponent)
     },
     {
-        path: 'forgot-password',
-        loadComponent: () => import('./pages/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent),
-    },
-    {
         path: 'search',
         loadComponent: () => import('./pages/search/search.component').then(m => m.SearchComponent)
     },

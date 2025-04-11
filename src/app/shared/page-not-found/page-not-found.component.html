@@ -1,1 +1,14 @@
-<p>page-not-found works!</p>
+<div class="not-found-container">
+    <mat-card class="not-found-card">
+      <mat-card-content>
+        <div class="not-found-content">
+          <mat-icon class="not-found-icon">error_outline</mat-icon>
+          <h1>Oldal nem található!</h1>
+          <p>A keresett oldal nem létezik!<p>
+          <button mat-raised-button color="primary" [routerLink]="['/home']" routerLinkActive="active">
+            <mat-icon>home</mat-icon> Térj vissza a főoldalra!
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
