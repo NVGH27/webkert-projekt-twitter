@@ -26,15 +26,14 @@ body {
   transform: translate(-50%, -50%);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-height: 100%; // Ensure it doesn't exceed 100% height
-  overflow-y: auto; // Add scroll if content overflows
+  max-height: 100%;
+  overflow-y: auto;
 
   &:hover {
     transform: translate(-50%, -50%) scale(1.02);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); 
   }
 }
-
 
 .register-header {
   font-size: 2rem;
@@ -45,9 +44,9 @@ body {
 }
 
 .register-form {
-  display: grid; // Use grid layout for better control
-  grid-template-columns: repeat(2, 1fr); // Two columns for form fields
-  gap: 1rem; // Adjust gap between fields
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 .input-field {
@@ -58,8 +57,8 @@ body {
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
-  width: 100%; // Ensure fields take full width of their grid cell
-  box-sizing: border-box; // Include padding and border in width
+  width: 100%;
+  box-sizing: border-box;
 
   &:focus {
     background: #ffffff;
@@ -79,8 +78,8 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
   box-shadow: 0 4px 15px rgba(106, 27, 154, 0.4);
-  grid-column: span 2; // Make the button span across two columns
-  margin-bottom: 0.8rem; // Smaller gap under the button
+  grid-column: span 2;
+  margin-bottom: 0.8rem;
 
   &:hover {
     background: linear-gradient(120deg, #8e44ad, #6a1b9a);
@@ -97,4 +96,35 @@ body {
   margin: 0 auto 5rem;
   width: 150px;
   height: auto;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    width: 80%;
+    padding: 1.5rem;
+  }
+
+  .register-header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .register-form {
+    gap: 1rem;
+  }
+
+  .input-field {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .register-button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .logo {
+    margin-bottom: 3rem;
+    width: 120px;
+  }
 }

@@ -1,0 +1,116 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tweets-container {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    width: 200%;
+    margin: 0 auto;
+  }
+  
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200%;
+    max-width: 500px;
+    margin: 0 auto;
+    
+    form {
+      display: flex;
+      width: 100%;
+      gap: 1rem;
+      justify-content: center;
+      border-radius: 12px;
+      background-color: #1c1c1e;
+      padding: 1rem;
+      width: 200%;
+    }
+    
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 1rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: white;
+      background-color: #2e2e2e;
+      border: 2px solid #6a1b9a;
+      transition: all 0.3s ease;
+      width: 100%;
+      
+      &:focus {
+        outline: none;
+        border-color: #8e44ad;
+        box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+      }
+      
+      &::placeholder {
+        color: #bbb;
+      }
+    }
+    
+    button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      background-color: #6a1b9a;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      
+      &:hover {
+        background-color: #8e44ad;
+        transform: scale(1.05);
+      }
+    }
+  }
+  
+  .search-results {
+    margin-top: 1rem;
+    background-color: #1c1c1e;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 200%;  
+    
+    p {
+      font-size: 1rem;
+      color: #a1a1aa;
+      text-align: center;
+    }
+  }
+  
+  .tweet {
+    background-color: #1c1c1e;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+    .tweet-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #a1a1aa;
+      margin-bottom: 0.5rem;
+  
+      .user-name {
+        font-weight: bold;
+        color: #d8b4fe;
+      }
+    }
+  
+    p {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }

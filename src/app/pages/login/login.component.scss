@@ -25,8 +25,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-height: 100%; // Ensure it doesn't exceed 100% height
-  overflow-y: auto; // Add scroll if content overflows
+  max-height: 100%;
+  overflow-y: auto;
 
   &:hover {
     transform: translate(-50%, -50%) scale(1.02);
@@ -99,4 +99,31 @@ body {
   margin: 0 auto 5rem;
   width: 150px;
   height: auto;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    width: 80%;
+    padding: 1.5rem;
+  }
+
+  .login-header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .input-field {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .login-button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .logo {
+    margin-bottom: 3rem;
+    width: 120px;
+  }
 }

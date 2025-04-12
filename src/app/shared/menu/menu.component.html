@@ -1,27 +1,29 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened>
-      <img src="assets/logo_png.png" alt="Logo" class="logo" /> 
-      <mat-nav-list>
-        <a mat-list-item routerLink="/home" routerLinkActive="active">
-          <mat-icon>home</mat-icon>
-          <span>Főoldal</span>
-        </a>
-        <a mat-list-item routerLink="/search" routerLinkActive="active">
-          <mat-icon>search</mat-icon>
-          <span>Keresés</span>
-        </a>
-        <a mat-list-item routerLink="/notifications" routerLinkActive="active">
-          <mat-icon>notifications</mat-icon>
-          <span>Értesítések</span>
-        </a>
-        <a mat-list-item routerLink="/profile" routerLinkActive="active">
-          <mat-icon>person</mat-icon>
-          <span>Profil</span>
-        </a>
-      </mat-nav-list>
-      <button class="logout-button" routerLink="/login">Kijelentkezés</button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <img src="assets/logo_png.png" alt="Logo" class="logo" /> 
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" routerLinkActive="active" matTooltip="Főoldal">
+        <mat-icon>home</mat-icon>
+        <span class="menu-text">Főoldal</span>
+      </a>
+      <a mat-list-item routerLink="/search" routerLinkActive="active" matTooltip="Keresés">
+        <mat-icon>search</mat-icon>
+        <span class="menu-text">Keresés</span>
+      </a>
+      <a mat-list-item routerLink="/notifications" routerLinkActive="active" matTooltip="Értesítések">
+        <mat-icon>notifications</mat-icon>
+        <span class="menu-text">Értesítések</span>
+      </a>
+      <a mat-list-item routerLink="/profile" routerLinkActive="active" matTooltip="Profil">
+        <mat-icon>person</mat-icon>
+        <span class="menu-text">Profil</span>
+      </a>
+    </mat-nav-list>
+    <button class="logout-button" routerLink="/login">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

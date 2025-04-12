@@ -4,31 +4,37 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  width: 320px; // Increased width for better spacing
-  background-color: #1c1c1e; // Deep blackish-gray for sidebar
+  width: 320px;
+  background-color: #1c1c1e;
   color: #fff;
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; // Ensure content is spaced, pushing logout button to the bottom
-  align-items: center; // Center content horizontally
+  justify-content: space-between;
+  align-items: center;
 
   .logo {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 100px; 
-    width: 100px; 
-    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto;
+  }
+
+  .menu-text {
+    display: inline-block;
+    color: white;
+    padding-left: 1rem;
   }
 }
 
 mat-sidenav-content {
   flex: 1;
   background: linear-gradient(135deg, #6a1b9a, #8e44ad);
-  color: #e4e4e7; // Light gray text for readability
+  color: #e4e4e7;
   padding: 2rem;
-  margin-left: 320px; // Adjusted to match the new sidenav width
+  margin-left: 320px;
 }
 
 mat-nav-list {
@@ -42,16 +48,17 @@ mat-nav-list {
     color: white;
     display: flex;
     align-items: center;
-    gap: 32px; // Further increased gap between mat-icon and span
+    gap: 32px;
     padding: 14px 50px;
     font-size: 1.1rem;
     font-weight: 500;
-    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out; // Updated transitions
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
 
     mat-icon {
       font-size: 28px;
       color: #d8b4fe;
       transition: color 0.2s ease;
+      padding-left: 17px;
     }
 
     &:hover {
@@ -88,13 +95,75 @@ span {
   font-size: 1rem;
   font-weight: bold;
   color: white;
-  background-color: #6a1b9a; // Background color for the logout button
+  background-color: #6a1b9a;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   position: absolute;
-  bottom: 20px; // Positioned at the bottom of the sidenav
+  bottom: 20px;
+
   &:hover {
     background-color: #8e44ad;
+  }
+
+  mat-icon {
+    font-size: 24px;
+    padding-left: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  mat-sidenav {
+    width: 60px; // Increased the width to 60px to show the icons
+    overflow: hidden;
+    padding-top: 0;
+
+    .logo {
+      height: 60px;
+      width: 60px;
+      padding-right: 20px;
+      overflow: hidden;
+    }
+  }
+
+  mat-sidenav-content {
+    margin-left: 60px; // Updated to match the sidenav width
+  }
+
+  .menu-text {
+    display: none; // Hide text on mobile for better space utilization
+  }
+
+  mat-nav-list {
+    gap: 0;
+  }
+
+  mat-nav-list a {
+    justify-content: center;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .logout-button {
+    width: 60px;
+    height: 60px;
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+
+    mat-icon {
+      font-size: 24px;
+      color: white;
+      ;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
   }
 }
