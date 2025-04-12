@@ -7,4 +7,9 @@ import { MenuComponent } from '../../shared/menu/menu.component';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {}
+export class ProfileComponent {
+  handleLogout() {
+    console.log('User logged out');
+    // Add logout logic here
+  }
+}

@@ -53,4 +53,9 @@ export class HomeComponent {
       this.newTweet = '';
     }
   }
+
+  handleLogout() {
+    console.log('User logged out');
+    // Add logout logic here
+  }
 }

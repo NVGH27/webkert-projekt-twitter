@@ -27,16 +27,14 @@ import { User } from '../../shared/models/User';
 })
 export class SignupComponent {
   signUpForm = new FormGroup({
+    username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     rePassword: new FormControl('', [Validators.required]),
-    name: new FormGroup({
-      firstname: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      lastname: new FormControl('', [Validators.required, Validators.minLength(2)])
-    })
+    birthdate: new FormControl('', []),
+    phoneNumber: new FormControl('', []), // Removed async validators to make it optional
   });
   
-  isLoading = false;
   showForm = true;
   signupError = '';
 
@@ -54,5 +52,19 @@ export class SignupComponent {
     if (password?.value !== rePassword?.value) {
       return;
     }
+
+    const newUser: User = {
+      username: this.signUpForm.value.email || '',
+      email: this.signUpForm.value.email || '',
+      password: this.signUpForm.value.password || '',
+      birthday: this.signUpForm.value.birthdate || '',
+      phoneNumber: this.signUpForm.value.phoneNumber || '',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+
+    console.log('New User:', newUser);
+    console.log('Form Value:', this.signUpForm.value);
+    this.router.navigateByUrl('/home');
   }
 }

@@ -5,17 +5,21 @@
   <form (ngSubmit)="login()" class="login-form">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Add meg az email-címed!" required />
+      <input matInput type="email" placeholder="Add meg az email-címed!" required [formControl]="email"/>
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Jelszó</mat-label>
-      <input matInput type="password" placeholder="Add meg a jelszavad!" required />
+      <input matInput type="password" placeholder="Add meg a jelszavad!" required [formControl]="password"/>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="login-button" routerLink="/home">Bejelentkezés</button>
+    @if (loginError) {
+      <div class="error-message">
+        {{ loginError }}
+      </div>
+    }
+    <button mat-raised-button color="primary" class="login-button" type="submit">Bejelentkezés</button>
     <p class="signup-text">
       Nincs még fiókod? <a class="signup-link" routerLink="/signup">Csatlakozz!</a>
     </p>
   </form>
 }
 </div>
-  

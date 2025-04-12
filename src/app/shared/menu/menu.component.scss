@@ -113,6 +113,9 @@ span {
 }
 
 @media (max-width: 768px) {
+  .mat-drawer-inner-container {
+    overflow: hidden;
+  }
   mat-sidenav {
     width: 60px; // Increased the width to 60px to show the icons
     overflow: hidden;
@@ -127,7 +130,8 @@ span {
   }
 
   mat-sidenav-content {
-    margin-left: 60px; // Updated to match the sidenav width
+    margin-left: 60px; 
+    overflow: hidden;
   }
 
   .menu-text {
@@ -159,7 +163,7 @@ span {
     mat-icon {
       font-size: 24px;
       color: white;
-      ;
+      
     }
 
     &:hover {

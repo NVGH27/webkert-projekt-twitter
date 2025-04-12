@@ -8,5 +8,8 @@ import { MenuComponent } from '../../shared/menu/menu.component';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent {
-
+  handleLogout() {
+    console.log('User logged out');
+    // Add logout logic here
+  }
 }

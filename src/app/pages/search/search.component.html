@@ -1,5 +1,5 @@
 <div class="home-container">
-    <app-menu></app-menu>
+    <app-menu [username]="'test'" (logout)="handleLogout()"></app-menu>
     <div class="tweets-container">
       <div class="search-container">
         <form>
@@ -15,4 +15,3 @@
       </div>
     </div>
   </div>
-  

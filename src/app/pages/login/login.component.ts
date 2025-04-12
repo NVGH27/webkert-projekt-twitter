@@ -28,7 +28,6 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   email = new FormControl('');
   password = new FormControl('');
-  isLoading: boolean = false;
   loginError: string = '';
   showLoginForm: boolean = true;
 
@@ -38,16 +37,12 @@ export class LoginComponent {
     this.loginError = '';
     
     if (this.email.value === 'test@gmail.com' && this.password.value === 'testpw') {
-      this.isLoading = true;
       this.showLoginForm = false;
-      
       localStorage.setItem('isLoggedIn', 'true');
-      
-      setTimeout(() => {
-        window.location.href = '/home';
-      }, 3000);
+      window.location.href = '/home';
+
     } else {
-      this.loginError = 'Invalid email or password!';
+      this.loginError = 'Hibás felhasználónév vagy jelszó!';
     }
   }
 }

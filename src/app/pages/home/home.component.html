@@ -1,5 +1,5 @@
 <div class="home-container">
-  <app-menu></app-menu>
+  <app-menu [username]="'test'" (logout)="handleLogout()"></app-menu>
   <div class="tweets-container">
     <div class="new-tweet">
       <textarea [(ngModel)]="newTweet" placeholder="Írj ki valamit!" [attr.maxlength]="maxTweetLength"></textarea>

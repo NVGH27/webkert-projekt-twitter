@@ -9,5 +9,8 @@ import { MenuComponent } from '../../shared/menu/menu.component';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
-
+  handleLogout() {
+    console.log('User logged out');
+    // Add logout logic here
+  }
 }

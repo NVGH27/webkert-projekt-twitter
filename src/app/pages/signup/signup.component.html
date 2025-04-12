@@ -5,29 +5,29 @@
     <form [formGroup]="signUpForm" (ngSubmit)="signup()" class="register-form">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Felhasználónév</mat-label>
-        <input matInput type="text" placeholder="Adj meg egy felhasználónevet!" required />
+        <input matInput type="text" placeholder="Adj meg egy felhasználónevet!" required formControlName="username"/>
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="Adj meg egy email-címet!" required />
+        <input matInput type="email" placeholder="Adj meg egy email-címet!" required formControlName="email"/>
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Jelszó</mat-label>
-        <input matInput type="password" placeholder="Add meg a jelszavad!" required />
+        <input matInput type="password" placeholder="Add meg a jelszavad!" required formControlName="password"/>
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Jelszó újra</mat-label>
-        <input matInput type="password" placeholder="Erősítsd meg a jelszavad!" required />
+        <input matInput type="password" placeholder="Erősítsd meg a jelszavad!" required formControlName="rePassword"/>
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Születési dátum (nem kötelező)</mat-label>
-        <input matInput type="date" placeholder="Add meg a szúletésnapod!" />
+        <input matInput type="date" placeholder="Add meg a szúletésnapod!" formControlName="birthdate"/>
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Telefonszám (nem kötelező)</mat-label>
-        <input matInput type="tel" placeholder="Add meg a telefonszámod!" />
+        <input matInput type="tel" placeholder="Add meg a telefonszámod!" formControlName="phoneNumber"/>
       </mat-form-field>
-      <button mat-raised-button color="primary" class="register-button" routerLink="/home">Regisztráció</button>
+      <button mat-raised-button color="primary" class="register-button" type="submit">Regisztráció</button>
     </form>
     <p class="login-text">
       Van már fiókod? <a class="login-link" routerLink="/login">Jelentkezz be!</a>

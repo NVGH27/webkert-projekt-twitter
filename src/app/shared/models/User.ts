@@ -1,8 +1,6 @@
 import { Tweet } from "./Tweet";
 
 export interface User {
-    id: number;
-    name: string;
     username: string;
     email: string;
     password: string;
@@ -11,5 +9,6 @@ export interface User {
     bio?: string;
     profile_image_url?: string;
     birthday?: string;
+    phoneNumber?: string;
     tweets?: Tweet[];
 }

@@ -1,6 +1,7 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened>
     <img src="assets/logo_png.png" alt="Logo" class="logo" /> 
+    <p>Welcome, {{ username }}</p> <!-- Display username -->
     <mat-nav-list>
       <a mat-list-item routerLink="/home" routerLinkActive="active" matTooltip="Főoldal">
         <mat-icon>home</mat-icon>
@@ -19,7 +20,7 @@
         <span class="menu-text">Profil</span>
       </a>
     </mat-nav-list>
-    <button class="logout-button" routerLink="/login">
+    <button class="logout-button" (click)="onLogout()"> <!-- Emit logout -->
       <mat-icon>logout</mat-icon>
     </button>
   </mat-sidenav>
