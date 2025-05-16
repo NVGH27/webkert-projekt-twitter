@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from '../../shared/menu/menu.component';
-//import { TimeAgoPipe } from '../../shared/pipes/time-ago.pipe';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
-  imports: [MenuComponent/* TimeAgoPipe*/],
+  imports: [MenuComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
-  handleLogout() {
-    console.log('User logged out');
-    // Add logout logic here
+  constructor(private authService: AuthService, private router: Router) {}
+
+  async handleLogout() {
+    await this.authService.signOut();
+    this.router.navigateByUrl('/login');
   }
 }

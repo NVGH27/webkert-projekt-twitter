@@ -3,6 +3,8 @@ import { MenuComponent } from '../../shared/menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TimeAgoPipe } from '../../shared/pipes/time-ago.pipe';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -40,6 +42,8 @@ export class HomeComponent {
 
   private nextId = 3;
 
+  constructor(private authService: AuthService, private router: Router) {}
+
   addTweet() {
     if (this.newTweet.trim()) {
       const now = new Date();
@@ -54,8 +58,8 @@ export class HomeComponent {
     }
   }
 
-  handleLogout() {
-    console.log('User logged out');
-    // Add logout logic here
+  async handleLogout() {
+    await this.authService.signOut();
+    this.router.navigateByUrl('/login');
   }
 }

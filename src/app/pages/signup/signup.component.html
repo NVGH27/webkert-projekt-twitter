@@ -1,7 +1,7 @@
 <img src="assets/logo_png.png" alt="Logo" class="logo" />
 <div class="register-container">
     <h1 class="register-header">Regisztrálj most!</h1>
-    @if (showForm) {
+    <ng-container *ngIf="showForm">
     <form [formGroup]="signUpForm" (ngSubmit)="signup()" class="register-form">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Felhasználónév</mat-label>
@@ -21,7 +21,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Születési dátum (nem kötelező)</mat-label>
-        <input matInput type="date" placeholder="Add meg a szúletésnapod!" formControlName="birthdate"/>
+        <input matInput type="date" placeholder="Add meg a születésnapod!" formControlName="birthdate"/>
       </mat-form-field>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Telefonszám (nem kötelező)</mat-label>
@@ -29,8 +29,9 @@
       </mat-form-field>
       <button mat-raised-button color="primary" class="register-button" type="submit">Regisztráció</button>
     </form>
+    <div *ngIf="signupError" class="error-message">{{ signupError }}</div>
     <p class="login-text">
       Van már fiókod? <a class="login-link" routerLink="/login">Jelentkezz be!</a>
     </p>
-  }
+    </ng-container>
   </div>

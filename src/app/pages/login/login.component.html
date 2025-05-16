@@ -1,25 +1,21 @@
 <img src="assets/logo_png.png" alt="Logo" class="logo" />
 <div class="login-container"> 
   <h1 class="login-header">Jelentkezz be!</h1>
-  @if (showLoginForm) {
-  <form (ngSubmit)="login()" class="login-form">
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Add meg az email-címed!" required [formControl]="email"/>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Jelszó</mat-label>
-      <input matInput type="password" placeholder="Add meg a jelszavad!" required [formControl]="password"/>
-    </mat-form-field>
-    @if (loginError) {
-      <div class="error-message">
-        {{ loginError }}
-      </div>
-    }
-    <button mat-raised-button color="primary" class="login-button" type="submit">Bejelentkezés</button>
-    <p class="signup-text">
-      Nincs még fiókod? <a class="signup-link" routerLink="/signup">Csatlakozz!</a>
-    </p>
-  </form>
-}
+  <ng-container *ngIf="showLoginForm">
+    <form (ngSubmit)="login()" class="login-form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Add meg az email-címed!" required [formControl]="email"/>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Jelszó</mat-label>
+        <input matInput type="password" placeholder="Add meg a jelszavad!" required [formControl]="password"/>
+      </mat-form-field>
+      <div *ngIf="loginError" class="error-message">{{ loginError }}</div>
+      <button mat-raised-button color="primary" class="login-button" type="submit">Bejelentkezés</button>
+      <p class="signup-text">
+        Nincs még fiókod? <a class="signup-link" routerLink="/signup">Csatlakozz!</a>
+      </p>
+    </form>
+  </ng-container>
 </div>

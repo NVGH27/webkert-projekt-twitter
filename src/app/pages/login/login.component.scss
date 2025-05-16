@@ -101,6 +101,19 @@ body {
   height: auto;
 }
 
+.error-message {
+  color: #fff;
+  background: #e53935;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(229,57,53,0.15);
+  border: 1px solid #b71c1c;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .login-container {
     width: 80%;

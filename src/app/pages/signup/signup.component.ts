@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { User } from '../../shared/models/User';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -38,23 +39,23 @@ export class SignupComponent {
   showForm = true;
   signupError = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  signup(): void {
+  async signup(): Promise<void> {
     if (this.signUpForm.invalid) {
-      this.signupError = 'Please correct the form errors before submitting.';
+      this.signupError = 'Kérlek, javítsd a hibákat a regisztrációhoz!';
       return;
     }
 
     const password = this.signUpForm.get('password');
     const rePassword = this.signUpForm.get('rePassword');
-
     if (password?.value !== rePassword?.value) {
+      this.signupError = 'A jelszavak nem egyeznek!';
       return;
     }
 
     const newUser: User = {
-      username: this.signUpForm.value.email || '',
+      username: this.signUpForm.value.username || '',
       email: this.signUpForm.value.email || '',
       password: this.signUpForm.value.password || '',
       birthday: this.signUpForm.value.birthdate || '',
@@ -63,8 +64,20 @@ export class SignupComponent {
       updated_at: new Date().toISOString(),
     };
 
-    console.log('New User:', newUser);
-    console.log('Form Value:', this.signUpForm.value);
-    this.router.navigateByUrl('/home');
+    try {
+      await this.authService.signUp(
+        newUser.email,
+        newUser.password,
+        newUser
+      );
+      await this.authService.signIn(newUser.email, newUser.password);
+      this.router.navigate(['/home']);
+    } catch (error: any) {
+      if (error.code === 'auth/email-already-in-use') {
+        this.signupError = 'Az email már használatban van';
+      } else {
+        this.signupError = error.message || 'Hiba a regisztráció során.';
+      }
+    }
   }
 }

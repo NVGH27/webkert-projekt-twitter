@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from '../../shared/menu/menu.component';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
@@ -8,8 +10,10 @@ import { MenuComponent } from '../../shared/menu/menu.component';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent {
-  handleLogout() {
-    console.log('User logged out');
-    // Add logout logic here
+  constructor(private authService: AuthService, private router: Router) {}
+
+  async handleLogout() {
+    await this.authService.signOut();
+    this.router.navigateByUrl('/login');
   }
 }

@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -31,18 +33,24 @@ export class LoginComponent {
   loginError: string = '';
   showLoginForm: boolean = true;
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  login() {
+  async login() {
     this.loginError = '';
-    
-    if (this.email.value === 'test@gmail.com' && this.password.value === 'testpw') {
-      this.showLoginForm = false;
+    if (!this.email.value || !this.password.value) {
+      this.loginError = 'Kérlek, töltsd ki az emailt és a jelszót!';
+      return;
+    }
+    try {
+      await this.authService.signIn(this.email.value, this.password.value);
       localStorage.setItem('isLoggedIn', 'true');
-      window.location.href = '/home';
-
-    } else {
-      this.loginError = 'Hibás felhasználónév vagy jelszó!';
+      this.router.navigateByUrl('/home');
+    } catch (error: any) {
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        this.loginError = 'Hibás email vagy jelszó!';
+      } else {
+        this.loginError = error.message || 'Hiba a bejelentkezés során.';
+      }
     }
   }
 }
