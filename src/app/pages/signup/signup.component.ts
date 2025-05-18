@@ -47,30 +47,31 @@ export class SignupComponent {
       return;
     }
 
-    const password = this.signUpForm.get('password');
+    const password = this.signUpForm.value.password || '';
     const rePassword = this.signUpForm.get('rePassword');
-    if (password?.value !== rePassword?.value) {
+    if (password !== rePassword?.value) {
       this.signupError = 'A jelszavak nem egyeznek!';
       return;
     }
 
-    const newUser: User = {
+    // Prepare all required fields for Firestore, most as empty string/array if not provided
+    const newUser: Partial<User> = {
       username: this.signUpForm.value.username || '',
       email: this.signUpForm.value.email || '',
-      password: this.signUpForm.value.password || '',
+      created_at: new Date().toISOString(),
       birthday: this.signUpForm.value.birthdate || '',
       phoneNumber: this.signUpForm.value.phoneNumber || '',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      bio: '',
+      profile_image_url: '',
+      tweets: [],
     };
 
     try {
       await this.authService.signUp(
-        newUser.email,
-        newUser.password,
+        newUser.email!,
+        password,
         newUser
       );
-      await this.authService.signIn(newUser.email, newUser.password);
       this.router.navigate(['/home']);
     } catch (error: any) {
       if (error.code === 'auth/email-already-in-use') {

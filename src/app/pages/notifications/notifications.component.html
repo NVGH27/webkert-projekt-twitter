@@ -1,5 +1,18 @@
-<app-menu [username]="'test'" (logout)="handleLogout()"></app-menu>
+<app-menu (logout)="handleLogout()"></app-menu>
+
 <div class="notifications">
-    <h1>Értesítések</h1>
-    <p>Készítés alatt!!</p>
+  <h1>Értesítések</h1>
+
+  <div *ngIf="loading">Betöltés...</div>
+
+  <div *ngIf="!loading && notifications.length === 0">
+    <p>Nincsenek értesítések.</p>
+  </div>
+
+  <ul *ngIf="!loading && notifications.length > 0">
+    <li *ngFor="let notification of notifications | unreadOnly">
+      <p>{{ notification.message }}</p>
+      <small>{{ notification.createdAt | date:'short' }}</small>
+    </li>
+  </ul>
 </div>

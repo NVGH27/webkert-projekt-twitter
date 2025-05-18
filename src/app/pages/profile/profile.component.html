@@ -1,5 +1,31 @@
-<app-menu [username]="'test'" (logout)="handleLogout()"></app-menu>
+<app-menu [username]="user?.username || ''" (logout)="handleLogout()"></app-menu>
 <div class="profile">
     <h1>Profil</h1>
-    <p>Készítés alatt!!</p>
+    <div *ngIf="loading">
+  <p>Betöltés...</p>
+</div>
+
+<div *ngIf="!loading && user">
+  <div class="profile-header">
+    <h2>{{ user.username }}</h2>
+    <p *ngIf="user.bio">{{ user.bio }}</p>
+    <p *ngIf="user.birthday">{{ user.birthday }}</p>
+  </div>
+  <h3>Saját tweetjeid</h3>
+  <div class="tweets-list">
+    <div *ngFor="let tweet of userTweets" class="tweet">
+      <span class="tweet-time">{{ tweet.timestamp | timeAgo }}</span>
+      <p>{{ tweet.content }}</p>
+      <div class="tweet-actions">
+        <button (click)="editTweet(tweet)">Szerkesztés</button>
+        <button (click)="deleteTweet(tweet.id)">Törlés</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading && !user">
+  <p>Nincs bejelentkezett felhasználó vagy nincs adat.</p>
+</div>
+
 </div>

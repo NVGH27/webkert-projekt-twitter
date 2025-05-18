@@ -51,8 +51,9 @@ export class AuthService {
         password
       );
       
-      // Exclude password from Firestore user data
-      const { password: _pw, ...safeUserData } = userData;
+      // Exclude password from Firestore user data (only if present)
+      const safeUserData = { ...userData };
+      delete (safeUserData as any).password;
       await this.createUserData(userCredential.user.uid, {
         ...safeUserData,
         email: email,

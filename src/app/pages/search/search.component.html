@@ -1,17 +1,31 @@
 <div class="home-container">
-    <app-menu [username]="'test'" (logout)="handleLogout()"></app-menu>
-    <div class="tweets-container">
-      <div class="search-container">
-        <form>
-          <input type="text" placeholder="Keresés..." name="search" />
-          <button type="submit">Keresés</button>
-        </form>
-        <div class="search-results">
-          <p>Nincs megjeleníthető adat</p>
-        </div>
-      </div>
-      <div class="tweets-list">
-        <! -- TODO -->
+  <app-menu [username]="'test'" (logout)="handleLogout()"></app-menu>
+  <div class="tweets-container">
+    <div class="search-container">
+      <form (submit)="onSearchSubmit($event)">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          name="search"
+          placeholder="Keresés..."
+        />
+        <button type="submit">Keresés</button>
+      </form>
+
+      <div class="search-results" *ngIf="searchTerm.trim().length > 0">
+        <p *ngIf="filteredTweets.length === 0">Nincs megjeleníthető adat</p>
+        <ul *ngIf="filteredTweets.length > 0">
+          <li *ngFor="let tweet of filteredTweets" class="tweet-card">
+            <div class="tweet-header">
+              <strong>{{ userIdToUsernameMap[tweet.authorId] || 'Ismeretlen' }}</strong>
+            </div>
+            <div class="tweet-content">
+              {{ tweet.content }}
+            </div>
+
+          </li>
+        </ul>
       </div>
     </div>
   </div>
+</div>

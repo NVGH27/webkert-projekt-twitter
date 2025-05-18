@@ -1,7 +1,9 @@
 export interface Tweet {
-    id: number;
-    user_id: number;
-    text: string;
-    created_at: Date;
-    updated_at: Date;
-  }
+  id: string;
+  content: string;
+  timestamp: Date;
+  likes: number;
+  likedBy: string[];
+  authorId: string;
+  comments?: Comment[];
+}

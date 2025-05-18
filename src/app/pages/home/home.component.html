@@ -1,20 +1,38 @@
 <div class="home-container">
-  <app-menu [username]="'test'" (logout)="handleLogout()"></app-menu>
+  <app-menu (logout)="handleLogout()"></app-menu>
+
   <div class="tweets-container">
+    <!-- Új tweet beküldése -->
     <div class="new-tweet">
-      <textarea [(ngModel)]="newTweet" placeholder="Írj ki valamit!" [attr.maxlength]="maxTweetLength"></textarea>
-      <div class="tweet-info">
-        <span>{{ newTweet.length }}/{{ maxTweetLength }}</span>
-        <button (click)="addTweet()">Tweet</button>
-      </div>
+      <textarea
+  [(ngModel)]="newTweetContent"
+  placeholder="Írj valamit..."
+  maxlength="280"
+></textarea>
+
+<div class="tweet-info">
+  <span>{{ newTweetContent.length }}/280</span>
+  <button (click)="postTweet()" [disabled]="!newTweetContent.trim().length">Tweet</button>
+</div>
     </div>
+
     <div class="tweets-list">
       <div *ngFor="let tweet of tweets" class="tweet">
         <div class="tweet-header">
-          <span class="user-name">User #{{ tweet.user_id }}</span>
-          <span class="tweet-time">{{ tweet.created_at | timeAgo }}</span>
+          <span class="user-name">{{ userIdToUsernameMap[tweet.authorId] || 'Ismeretlen' }}</span>
+          <span class="tweet-time">{{ tweet.timestamp | date:'short' }}</span>
         </div>
-        <p>{{ tweet.text }}</p>
+
+        <p>{{ tweet.content }}</p>
+
+        <div class="tweet-actions">
+          <button (click)="toggleLike(tweet)">
+            ❤️ {{ tweet.likedBy.length }}
+            <span *ngIf="isLikedByUser(tweet)">(Te)</span>
+          </button>
+
+          <button *ngIf="isOwner(tweet)" (click)="deleteTweet(tweet)">Törlés</button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -11,6 +12,7 @@ export const routes: Routes = [
     },
     {
         path: 'profile',
+        canActivate: [authGuard],
         loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent)
     },
     {
@@ -19,6 +21,7 @@ export const routes: Routes = [
     },
     {
         path: 'notifications',
+        canActivate: [authGuard],
         loadComponent: () => import('./pages/notifications/notifications.component').then(m => m.NotificationsComponent)
     },
     {

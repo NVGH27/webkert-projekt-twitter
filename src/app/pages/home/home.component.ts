@@ -1,61 +1,101 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuComponent } from '../../shared/menu/menu.component';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { TimeAgoPipe } from '../../shared/pipes/time-ago.pipe';
+import { TweetService } from '../../shared/services/tweet.service';
+import { Tweet } from '../../shared/models/Tweet';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { TimeAgoPipe } from '../../shared/pipes/time-ago.pipe';
+import { UserService } from '../../shared/services/user.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { User } from 'firebase/auth';
+
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [MenuComponent, FormsModule, CommonModule, TimeAgoPipe],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [FormsModule, CommonModule, MenuComponent]
 })
-export class HomeComponent {
-  maxTweetLength = 280;
-  newTweet = '';
+export class HomeComponent implements OnInit {
+  tweets: Tweet[] = [];
+  currentUser: User | null = null;
+  newTweetContent: string = '';
+  userIdToUsernameMap: { [key: string]: string } = {};
+  private userSubscription?: Subscription;
 
-  tweets: {
-    id: number;
-    user_id: number;
-    text: string;
-    created_at: Date;
-    updated_at: Date;
-  }[] = [
-    {
-      id: 1,
-      user_id: 101,
-      text: 'Hello, world!',
-      created_at: new Date(Date.now() - 1000 * 60 * 10), // 10 perce
-      updated_at: new Date()
-    },
-    {
-      id: 2,
-      user_id: 102,
-      text: 'This is my first tweet!',
-      created_at: new Date(Date.now() - 1000 * 60 * 60), // 1 órája
-      updated_at: new Date()
+  constructor(
+    private tweetService: TweetService,
+    private router: Router,
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    this.userSubscription = this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      this.loadTweets();
+    }); 
+  }
+
+  ngOnDestroy(): void {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
     }
-  ];
+  }
 
-  private nextId = 3;
+  loadTweets(): void {
+    this.tweetService.getAllTweets().subscribe(async tweets => {
+      this.tweets = tweets;
 
-  constructor(private authService: AuthService, private router: Router) {}
+      const uniqueUserIds = [...new Set(tweets.map(t => t.authorId))];
 
-  addTweet() {
-    if (this.newTweet.trim()) {
-      const now = new Date();
-      this.tweets.unshift({
-        id: this.nextId++,
-        user_id: 999, // jelenlegi felhasználó ID-je
-        text: this.newTweet.trim(),
-        created_at: now,
-        updated_at: now
-      });
-      this.newTweet = '';
+      for (const userId of uniqueUserIds) {
+        if (!this.userIdToUsernameMap[userId]) {
+          const username = await this.userService.getUsernameById(userId);
+          this.userIdToUsernameMap[userId] = username || 'Ismeretlen';
+        }
+      }
+    });
+  }
+
+  async postTweet(): Promise<void> {
+    if (!this.newTweetContent.trim()) return;
+    try {
+      await this.tweetService.addTweet(this.newTweetContent);
+      this.newTweetContent = '';
+      this.loadTweets();
+    } catch (error) {
+      console.error('Tweet post error:', error);
     }
+  }
+
+  async toggleLike(tweet: Tweet): Promise<void> {
+    try {
+      await this.tweetService.toggleLike(tweet.id);
+      this.loadTweets();
+    } catch (error) {
+      console.error('Like error:', error);
+    }
+  }
+
+  async deleteTweet(tweet: Tweet): Promise<void> {
+    try {
+      await this.tweetService.deleteTweet(tweet.id);
+      this.loadTweets();
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
+  }
+
+  isLikedByUser(tweet: Tweet): boolean {
+    return tweet.likedBy.includes(this.currentUser?.uid || '');
+  }
+
+  isOwner(tweet: Tweet): boolean {
+    return tweet.authorId === this.currentUser?.uid;
   }
 
   async handleLogout() {
